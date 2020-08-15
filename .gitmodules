@@ -1,0 +1,3 @@
+[submodule "nushell"]
+	path = nushell
+	url = git@github.com:georgeteo/nushell.git
