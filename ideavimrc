@@ -1,0 +1,169 @@
+" Regular Vim configuration
+colorscheme onedark
+
+let mapleader="`"
+inoremap jk <ESC>
+nnoremap ;w :w<CR>
+nnoremap ;q :q<CR>
+
+" easy window navigation
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
+nnoremap <a-h> gT
+nnoremap <a-l> gt
+nnoremap <c-s-tab> gT
+nnoremap <c-tab> gt
+
+" clear the search buffer when hitting return
+nnoremap <space><cr> :nohlsearch<cr>
+
+set backspace=indent,eol,start      " Allow backspace over everything in insert mode.
+set complete-=i
+set smarttab
+set smartindent
+set nrformats-=octal
+
+set ttimeout
+set ttimeoutlen=100
+
+set clipboard=unnamed
+
+set hlsearch            " Highlight search results.
+set ignorecase          " Make searching case insensitive
+set smartcase           " ... unless the query has capital letters.
+set incsearch           " Incremental search.
+set gdefault            " Use 'g' flag by default with :s/foo/bar/.
+set magic               " Use 'magic' patterns (extended regular expressions).
+
+set confirm            " Enable error files & error jumping.
+set clipboard+=unnamed " Yanks go on clipboard instead.
+set autowrite          " Writes on make/shell commands
+set showcmd             " Show (partial) command in status line.
+set showmatch           " Show matching brackets.
+set showmode            " Show current mode.
+set ruler               " Show the line and column numbers of the cursor.
+set number              " Show the line numbers on the left side.
+set formatoptions+=o    " Continue comment marker in new lines.
+set textwidth=0         " Hard-wrap long lines as you type them.
+set expandtab           " Insert spaces when TAB is pressed.
+set tabstop=4        " Render TABs using this many spaces.
+set shiftwidth=4        " Indentation amount for < and > commands.
+
+set noerrorbells        " No beeps.
+set modeline            " Enable modeline.
+set esckeys             " Cursor keys in insert mode.
+set linespace=0         " Set line-spacing to minimum.
+set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
+
+" More natural splits
+set splitbelow          " Horizontal split below current.
+set splitright          " Vertical split to right of current.
+
+set display+=lastline
+set nostartofline       " Do not jump to first character with page commands.
+
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+" Stop cursor from jumping over wrapped lines
+nnoremap j gj
+nnoremap k gk
+
+" Keep search results at the center of screen
+nmap n nzz
+nmap N Nzz
+nmap * *zz
+nmap # #zz
+nmap g* g*zz
+nmap g# g#zz " match ExtraWhitespace /\s\+$/
+
+" Reset the listchars
+set listchars=""
+" make tabs visible
+set listchars=tab:▸▸
+" show trailing spaces as dots
+set listchars+=trail:•
+" The character to show in the last column when wrap is off and the line
+" continues beyond the right of the screen
+set listchars+=extends:>
+" The character to show in the last column when wrap is off and the line
+" continues beyond the right of the screen
+set listchars+=precedes:<
+
+" ---------------
+" Sounds
+" ---------------
+set noerrorbells
+set visualbell
+set t_vb=
+
+" ---------------
+" Mouse
+" ---------------
+set mousehide  " Hide mouse after chars typed
+set mouse=a    " Mouse in all modes
+
+" Better complete options to speed it up
+set complete=.,w,b,u,U
+
+" -------------
+"  Intellij actions
+"  ------------
+" Run stuff
+nnoremap <leader>gt :action GotoTest<cr>
+nnoremap <leader>k :action HighlightUsagesInFile<cr>
+nnoremap <leader>R :action Run<cr>
+nnoremap <leader>d :action DebugClass<cr>
+nnoremap <leader>D :action Debug<cr>
+nnoremap <leader>c :action CheckStyleCurrentFileAction<cr>
+
+" code refactoring
+nnoremap <leader>i :action InspectCode<cr>
+nnoremap <leader>r :action Refactorings.QuickListPopupAction<cr>
+
+" unimpaired mappings
+nnoremap [q :action PreviousOccurence<cr>
+nnoremap ]q :action NextOccurence<cr>
+nnoremap [m :action MethodUp<cr>
+nnoremap ]m :action MethodDown<cr>
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>
+
+" actions
+nnoremap <c-q> :action CloseContent<cr>
+nnoremap <c-q>q :action ReopenClosedTab<cr>
+nnoremap <leader>E :action Switcher<cr>
+nnoremap <leader>t :action FileStructurePopup<cr>
+nnoremap <leader>b :action ToggleLineBreakpoint<cr>
+
+
+nnoremap <c-[> :action Back<cr>
+nnoremap <leader>e :action SearchEverywhere<cr>
+nnoremap <leader>a :action GotoAction<cr>
+nnoremap <c-c> :action GotoClass<cr>
+noremap <c-o> :action GotoFile<cr>
+nnoremap <c-s> :action GotoSymbol<cr>
+nnoremap <c-u> :action ShowUsages<cr>
+nnoremap <leader>u :action FindUsages<cr>
+nnoremap <c-g> :action FileStructurePopup<cr>
+nnoremap <leader>v :action ProjectViewChangeView<cr>
+nnoremap <c-e>] :action GotoNextError<cr> :action ShowErrorDescription<cr>
+nnoremap <c-e>[ :action GotoPreviousError<cr>
+nnoremap <C-w>o :action MoveEditorToOppositeTabGroup<CR>
+
+" built-in navigation to navigated items works better
+nnoremap <c-.> :action Back<cr>
+nnoremap <c-,> :action Forward<cr>
+" but preserve ideavim defaults
+nnoremap g<c-o> <c-o>
+nnoremap g<c-i> <c-i>
+
+" built in search looks better
+nnoremap / :action Find<cr>
+" but preserve ideavim search
+nnoremap g/ /
+
+" Splitting screens
+nnoremap <c-x> :action SplitVertically<cr>
+nnoremap <c-z> :action SplitHorizontally<cr>
+nnoremap <c-j> :action PreviousTab<cr>
+nnoremap <c-k> :action NextTab<cr>
