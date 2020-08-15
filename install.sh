@@ -48,8 +48,8 @@ then
   yes_or_no 
   rm "$HOME/.alacritty.yml"
 fi
-echo "Running: ln -s $DIR/.alacritty.yml $HOME/.alacritty.yml"
-ln -s "$DIR/.alacritty.yml" "$HOME/.alacritty.yml"
+echo "Running: ln -s $DIR.alacritty.yml $HOME/.alacritty.yml"
+ln -s "$DIR.alacritty.yml" "$HOME/.alacritty.yml"
 echo "Symlinked alacritty.yml"
 
 # Symlink tmux conf
@@ -59,6 +59,27 @@ then
   yes_or_no 
   rm "$HOME/.tmux.conf"
 fi
-echo "Running: ln -s $DIR/.tmux.conf $HOME/.tmux.conf"
-ln -s "$DIR/.tmux.conf" "$HOME/.tmux.conf"
+echo "Running: ln -s $DIR.tmux.conf $HOME/.tmux.conf"
+ln -s "$DIR.tmux.conf" "$HOME/.tmux.conf"
 echo "Symlinked tmux.conf"
+
+# Install neovim
+if ! command -v nvim &> /dev/null
+then
+  curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+  tar xzf nvim-macos.tar.gz
+  ./nvim-osx64/bin/nvim
+  echo "Installed Neovim"
+fi
+
+if test -f "$HOME/.SpaceVim.d/init.toml"
+then
+  echo "$HOME/.SpaceVim.d/init.toml exists. Override it?"
+  yes_or_no
+  rm "$HOME/.SpaceVim.d/init.toml"
+fi
+mkdir "$HOME/.SpaceVim.d"
+echo "Running: ln -s $DIR.SpaceVim.d_init.toml $HOME/.SpaceVim.d/init.toml"
+ln -s "$DIR.SpaceVim.d_init.toml" "$HOME/.SpaceVim.d/init.toml"
+
+
