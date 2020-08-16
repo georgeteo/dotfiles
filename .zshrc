@@ -1,0 +1,1 @@
+/Users/gteo/Dotfiles/zshrc
