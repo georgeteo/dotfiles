@@ -95,7 +95,7 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 
 # Use vim as default
-export EDITOR="vim"
+export EDITOR="nvim"
 
 touch "$HOME/.localzshrc"
 source ~/.localzshrc
@@ -105,7 +105,7 @@ source ~/.localzshrc
 # rm ~/.zplug/zcompdump 2> /dev/null
 # brew analytics off 2>&1 >/dev/null
 # Fix issue with Alacrity and corp laptop
-if [ "$(uname)" = "Darwin" ]; then
-  ls ~/.profile_* 1> /dev/null 2>&1 && for f in ~/.profile_*; do source $f; done
-fi
-[ -r /Users/gteo/.profile_lda ] && . /Users/gteo/.profile_lda
+# if [ "$(uname)" = "Darwin" ]; then
+#   ls ~/.profile_* 1> /dev/null 2>&1 && for f in ~/.profile_*; do source $f; done
+# fi
+# [ -r /Users/gteo/.profile_lda ] && . /Users/gteo/.profile_lda
