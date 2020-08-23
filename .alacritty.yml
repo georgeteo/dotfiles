@@ -192,7 +192,7 @@ shell:
   args:
     - -l
     - -c
-    - "tmux new-session -s $(date +%s)" # tmux.config is configured to start with nu
+    - "/usr/local/bin/tmux new-session -s $(date +%s)" # tmux.config is configured to start with nu
 
 mouse:
   # URL launcher
